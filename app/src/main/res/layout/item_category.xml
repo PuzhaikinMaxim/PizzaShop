@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,28 +12,17 @@
         android:clipToPadding="false"
         android:clipChildren="false">
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:layout_width="90dp"
-            android:layout_height="30dp"
-            android:gravity="center"
             android:checked="true"
-            android:button="@android:color/transparent"
-            android:background="@drawable/bc_rb_category"
-            android:layout_marginStart="15dp"
-            android:fontFamily="@font/roboto_medium"
-            android:elevation="20dp"
-            android:textColor="@drawable/rb_category_text_color"
-            tools:text="Пицца"/>
+            android:text="@string/category_pizza"
+            style="@style/Category"/>
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:layout_width="90dp"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:checked="false"
-            android:button="@android:color/transparent"
-            android:background="@drawable/bc_rb_category"
-            android:layout_marginStart="15dp"
-            android:fontFamily="@font/roboto_medium"
-            android:elevation="10dp"
-            android:textColor="@drawable/rb_category_text_color"
-            tools:text="Пицца"/>
+            android:text="@string/category_combo"
+            style="@style/Category"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:text="@string/category_dessert"
+            style="@style/Category"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:text="@string/category_drinks"
+            style="@style/Category"/>
     </RadioGroup>
 </HorizontalScrollView>

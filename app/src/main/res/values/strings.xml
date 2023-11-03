@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Pizza Shop</string>
+    <string name="category_pizza">Пицца</string>
+    <string name="category_combo">Комбо</string>
+    <string name="category_dessert">Десерты</string>
+    <string name="category_drinks">Напитки</string>
+    <string name="bottom_bar_menu">Меню</string>
+    <string name="bottom_bar_profile">Профиль</string>
+    <string name="bottom_bar_bucket">Корзина</string>
 </resources>

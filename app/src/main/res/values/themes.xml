@@ -13,4 +13,16 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Category" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:background">@drawable/bc_rb_category</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:textColor">@drawable/rb_category_text_color</item>
+    </style>
 </resources>
