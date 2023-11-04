@@ -1,14 +1,15 @@
 package com.mxpj.pizzashop.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mxpj.pizzashop.R
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.appcompat.app.AppCompatActivity
+import com.mxpj.pizzashop.databinding.ActivityMainBinding
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
     }
 }

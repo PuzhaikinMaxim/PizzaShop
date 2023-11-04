@@ -3,16 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcv_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:name="com.mxpj.pizzashop.presentation.MenuFragment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bnv_main_navigation"
+        tools:layout="@layout/fragment_menu" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_main_navigation"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:background="@color/bottom_bar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemTextColor="@color/bottom_bar_colors"
+        app:itemIconTint="@color/bottom_bar_colors"
+        app:itemIconSize="24dp"
+        app:menu="@menu/bottom_bar_menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

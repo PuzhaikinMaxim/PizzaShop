@@ -2,18 +2,20 @@
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:clipChildren="false"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:scrollbars="none">
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:clipToPadding="false"
+        android:layout_gravity="center_vertical"
         android:clipChildren="false">
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:checked="true"
             android:text="@string/category_pizza"
+            android:layout_marginStart="20dp"
             style="@style/Category"/>
         <androidx.appcompat.widget.AppCompatRadioButton
             android:text="@string/category_combo"

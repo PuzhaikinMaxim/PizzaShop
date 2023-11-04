@@ -1,8 +1,11 @@
 package com.mxpj.pizzashop.presentation
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.mxpj.pizzashop.di.DaggerApplicationComponent
 
-@HiltAndroidApp
 class PizzaShopApplication: Application() {
+
+    val component by lazy {
+        DaggerApplicationComponent.factory().create(this)
+    }
 }
