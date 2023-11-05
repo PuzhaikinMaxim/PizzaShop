@@ -2,6 +2,7 @@ package com.mxpj.pizzashop.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
@@ -13,6 +14,6 @@ interface FoodDao {
     @Query("DELETE FROM food")
     fun clearFoodList()
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addFoodList(list: List<FoodDbModel>)
 }
