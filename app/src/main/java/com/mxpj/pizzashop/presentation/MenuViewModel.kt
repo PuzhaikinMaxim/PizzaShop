@@ -1,36 +1,38 @@
 package com.mxpj.pizzashop.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mxpj.pizzashop.R
 import com.mxpj.pizzashop.domain.Food
 import com.mxpj.pizzashop.domain.FoodRepository
 import com.mxpj.pizzashop.domain.Offer
+import com.mxpj.pizzashop.domain.OfferRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MenuViewModel @Inject constructor(
-    private val foodRepository: FoodRepository
+    private val foodRepository: FoodRepository,
+    private val offerRepository: OfferRepository
 ): ViewModel() {
 
-    val foodList = listOf(
-        Food(1,"Pizza1","desc1","от 200 р",2),
-        Food(2,"Pizza2","desc2","от 200 р",2),
-        Food(3,"Pizza3","desc3","от 200 р",2),
-        Food(4,"Pizza4","desc4","от 200 р",2),
-        Food(5,"Pizza5","desc5","от 200 р",2),
-        Food(6,"Pizza6","desc6","от 200 р",2),
-    )
+    private val _foodList = MutableLiveData<List<Food>>()
+    val foodList: LiveData<List<Food>>
+        get() = _foodList
 
-    val offerList = listOf(
-        Offer(1, R.drawable.offer_1),
-        Offer(2, R.drawable.offer_2),
-    )
+    val _offerList = MutableLiveData<List<Offer>>()
+    val offerList: LiveData<List<Offer>>
+        get() = _offerList
 
-    init {
+    fun setLists(hasNetworkConn: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            foodRepository.getFoodList()
+            val foodList = foodRepository.getFoodList(hasNetworkConn)
+            _foodList.postValue(foodList)
+            _offerList.postValue(offerRepository.getOfferList())
+            foodRepository.saveLocalFoodList(foodList)
         }
     }
 }

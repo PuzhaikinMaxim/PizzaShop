@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.mxpj.pizzashop.databinding.ItemFoodBinding
 import com.mxpj.pizzashop.domain.Food
+import com.squareup.picasso.Picasso
+import java.io.File
 
 class FoodListAdapter: Adapter<FoodListAdapter.FoodItemViewHolder>() {
 
@@ -33,6 +35,12 @@ class FoodListAdapter: Adapter<FoodListAdapter.FoodItemViewHolder>() {
             tvFoodName.text = item.name
             tvFoodDescription.text = item.description
             tvPrice.text = item.price
+            if(item.isLocal){
+                val file = File(item.imageLocation)
+                Picasso.get().load(file).into(ivFood)
+            } else {
+                Picasso.get().load(item.imageLocation).into(ivFood)
+            }
         }
     }
 

@@ -1,11 +1,13 @@
 package com.mxpj.pizzashop.di
 
+import android.app.Application
 import com.mxpj.pizzashop.data.FoodRepositoryImpl
+import com.mxpj.pizzashop.data.ImageLoader
 import com.mxpj.pizzashop.data.OfferRepositoryImpl
-import com.mxpj.pizzashop.data.network.FoodApiFactory
-import com.mxpj.pizzashop.data.network.FoodDataProvider
-import com.mxpj.pizzashop.data.network.FoodDataProviderImpl
-import com.mxpj.pizzashop.data.network.FoodService
+import com.mxpj.pizzashop.data.PicassoImageLoader
+import com.mxpj.pizzashop.data.local.AppDatabase
+import com.mxpj.pizzashop.data.local.FoodDao
+import com.mxpj.pizzashop.data.network.*
 import com.mxpj.pizzashop.domain.FoodRepository
 import com.mxpj.pizzashop.domain.OfferRepository
 import dagger.Binds
@@ -28,7 +30,23 @@ interface DataModule {
     @Binds
     fun foodDataProvider(impl: FoodDataProviderImpl): FoodDataProvider
 
+    @Singleton
+    @Binds
+    fun offerDataProvider(impl: OfferDataProviderImpl): OfferDataProvider
+
+    @Singleton
+    @Binds
+    fun imageLoader(impl: PicassoImageLoader): ImageLoader
+
     companion object {
+
+        @Singleton
+        @Provides
+        fun provideFoodDao(
+            application: Application
+        ): FoodDao {
+            return AppDatabase.getInstance(application).foodDao()
+        }
 
         @Singleton
         @Provides

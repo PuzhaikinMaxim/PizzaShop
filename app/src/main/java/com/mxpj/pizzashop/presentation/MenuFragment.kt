@@ -9,6 +9,7 @@ import com.mxpj.pizzashop.R
 import com.mxpj.pizzashop.databinding.FragmentMenuBinding
 import javax.inject.Inject
 
+
 class MenuFragment: BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::inflate) {
 
     @Inject
@@ -24,6 +25,7 @@ class MenuFragment: BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::infla
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory)[MenuViewModel::class.java]
+        viewModel.setLists(hasNetworkConnection())
         setupFoodListAdapter()
         setupOfferListAdapter()
         setupSpinner()
@@ -32,13 +34,17 @@ class MenuFragment: BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::infla
     private fun setupFoodListAdapter() {
         val adapter = FoodListAdapter()
         binding.rvFoodList.adapter = adapter
-        adapter.foodList = viewModel.foodList
+        viewModel.foodList.observe(requireActivity()){
+            adapter.foodList = it
+        }
     }
 
     private fun setupOfferListAdapter() {
         val adapter = OfferListAdapter()
         binding.rvOfferList.adapter = adapter
-        adapter.offerList = viewModel.offerList
+        viewModel.offerList.observe(requireActivity()){
+            adapter.offerList = it
+        }
     }
 
     private fun setupSpinner() {

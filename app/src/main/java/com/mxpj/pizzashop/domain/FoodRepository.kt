@@ -4,5 +4,7 @@ import androidx.lifecycle.LiveData
 
 interface FoodRepository {
 
-    suspend fun getFoodList(): List<Food>
+    suspend fun getFoodList(haveInternetConn: Boolean): List<Food>
+
+    suspend fun saveLocalFoodList(list: List<Food>)
 }
