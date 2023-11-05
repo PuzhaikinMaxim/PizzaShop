@@ -32,7 +32,9 @@ class MenuViewModel @Inject constructor(
             val foodList = foodRepository.getFoodList(hasNetworkConn)
             _foodList.postValue(foodList)
             _offerList.postValue(offerRepository.getOfferList())
-            foodRepository.saveLocalFoodList(foodList)
+            withContext(Dispatchers.Default){
+                foodRepository.saveLocalFoodList(foodList)
+            }
         }
     }
 }
